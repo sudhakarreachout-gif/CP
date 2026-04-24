@@ -1,82 +1,10 @@
 "use client"
 import { motion, AnimatePresence } from "framer-motion"
-import { Plus, Star, Heart } from "lucide-react"
-import { useCartStore } from "@/store/useCartStore"
-import { useState } from "react"
-import Image from "next/image"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
+import ProductCard from "./ProductCard"
 
 import { categories, allProducts } from "@/data/products"
-
-function ProductCard({ product }) {
-  const { addToCart } = useCartStore()
-  const [isLiked, setIsLiked] = useState(false)
-  const [imgError, setImgError] = useState(false)
-
-  return (
-    <motion.div 
-      layout
-      className="group card-hover bg-surface rounded-[20px] p-4 border border-border relative flex flex-col h-full clickable"
-    >
-      {/* Best Seller Badge */}
-      {product.isBestSeller && (
-        <div className="absolute top-6 left-6 z-10 bg-butter text-[#7A5000] font-nunito font-bold text-[10px] px-3 py-1 rounded-full shadow-sm">
-          Best Seller
-        </div>
-      )}
-
-      {/* Wishlist Heart */}
-      <button 
-        onClick={(e) => { e.stopPropagation(); setIsLiked(!isLiked); }}
-        className="absolute top-6 right-6 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm text-espresso/30 hover:text-terracotta transition-all clickable group/heart"
-      >
-        <motion.div animate={isLiked ? { scale: [1, 1.3, 1] } : {}}>
-          <Heart className={`w-5 h-5 ${isLiked ? "fill-terracotta text-terracotta" : "text-[#C8B8A2]"}`} />
-        </motion.div>
-      </button>
-
-      {/* Image Container */}
-      <div className="relative aspect-square rounded-t-[12px] overflow-hidden mb-5 bg-[#F0E8DC] flex items-center justify-center product-image-container">
-        {!imgError ? (
-          <Image 
-            src={product.image} 
-            alt={product.name} 
-            fill 
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div className="text-4xl">🐾</div>
-        )}
-        
-        {/* Hover Add to Cart Button */}
-        <button 
-          onClick={(e) => { e.stopPropagation(); addToCart(product); }}
-          className="absolute bottom-0 left-0 w-full bg-espresso text-white py-3 font-nunito font-bold text-[13px] translate-y-full group-hover:translate-y-0 transition-transform duration-200 clickable"
-        >
-          Add to Cart
-        </button>
-      </div>
-
-      {/* Product Info */}
-      <div className="flex-1 space-y-2 px-1">
-        <div className="flex items-center gap-1.5 text-butter">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className={`w-3.5 h-3.5 ${i < Math.floor(product.rating || 4.5) ? "fill-current" : "text-border"}`} />
-          ))}
-          <span className="text-[12px] font-nunito font-bold text-sage ml-1">{product.rating || 4.9}</span>
-        </div>
-        
-        <h3 className="text-[15px] font-nunito font-bold text-espresso leading-tight line-clamp-2">
-          {product.name}
-        </h3>
-        
-        <p className="text-[18px] font-nunito font-bold text-espresso">
-          ₹{product.price.toLocaleString('en-IN')}
-        </p>
-      </div>
-    </motion.div>
-  )
-}
 
 export default function ProductGrid({ activeCategory = null, onSelect }) {
   const filteredProducts = activeCategory 
@@ -131,10 +59,21 @@ export default function ProductGrid({ activeCategory = null, onSelect }) {
           </AnimatePresence>
         </motion.div>
 
-        {filteredProducts.length === 0 && (
+        {filteredProducts.length === 0 ? (
           <div className="text-center py-20 bg-surface rounded-[32px] border border-border">
             <p className="text-text-muted italic font-jakarta">No products found in this category yet. Stay tuned! 🐾</p>
           </div>
+        ) : (
+          !activeCategory && (
+            <div className="mt-16 text-center">
+              <Link href="/shop">
+                <button className="btn-primary px-12 py-5 text-lg shadow-2xl hover:scale-105 active:scale-95 transition-all clickable group">
+                  Explore All Collection 
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </div>
+          )
         )}
       </div>
     </section>

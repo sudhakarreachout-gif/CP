@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false)
 
   const handleClick = () => {
-    window.open('https://wa.me/910000000000?text=Hi%20Cuddle%20Paw!%20I%20have%20a%20question%20about%20my%20pet%20🐾', '_blank')
+    window.open('https://wa.me/916302946668?text=Hi%20Cuddle%20Paw!%20I%20have%20a%20question%20about%20my%20pet%20🐾', '_blank')
   }
 
   return (

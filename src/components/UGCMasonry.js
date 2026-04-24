@@ -4,27 +4,27 @@ import Image from "next/image"
 
 const communityImages = [
   {
-    src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb",
     handle: "@rocky_and_me"
   },
   {
-    src: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1558788353-f76d92427f16",
     handle: "@pawlife.india"
   },
   {
-    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b",
     handle: "@bella_rose"
   },
   {
-    src: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1561037404-61cd46aa615b",
     handle: "@cuddlepaw_fan"
   },
   {
-    src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb",
     handle: "@milo.diary"
   },
   {
-    src: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=500&q=80",
+    src: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6",
     handle: "@tails_of_india"
   },
 ];
@@ -67,7 +67,7 @@ export default function UGCMasonry() {
 
         <div className="mt-16 text-center">
           <a 
-            href="https://wa.me/910000000000?text=Hi%20Cuddle%20Paw!%20I'd%20love%20to%20share%20a%20photo%20of%20my%20pet%20🐾" 
+            href="https://wa.me/916302946668?text=Hi%20Cuddle%20Paw!%20I'd%20love%20to%20share%20a%20photo%20of%20my%20pet%20🐾" 
             target="_blank" 
             rel="noopener noreferrer"
           >

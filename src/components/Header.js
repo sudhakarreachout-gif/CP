@@ -8,7 +8,7 @@ import { allProducts } from "@/data/products"
 import Image from "next/image"
 
 export default function Header() {
-  const { cart, isOpen, toggleCart, removeFromCart, updateQuantity, addToCart } = useCartStore()
+  const { cart, isOpen, toggleCart, removeFromCart, updateQuantity, addToCart, clearCart } = useCartStore()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
@@ -16,6 +16,22 @@ export default function Header() {
   
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0)
   const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
+
+  const handleCheckout = () => {
+    if (cart.length === 0) return
+
+    // Format cart items for WhatsApp
+    const itemsList = cart.map(item => `- ${item.name} x${item.quantity} (₹${item.price.toLocaleString('en-IN')})`).join('%0A')
+    const message = `Hi Cuddle Paw! 🐾%0AI'd like to place an order for:%0A%0A${itemsList}%0A%0ATotal: ₹${totalPrice.toLocaleString('en-IN')}%0A%0APlease let me know the next steps!`
+    
+    window.open(`https://wa.me/916302946668?text=${message}`, '_blank')
+    
+    // Clear cart and close drawer after a short delay
+    setTimeout(() => {
+      clearCart()
+      toggleCart()
+    }, 1000)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,7 +135,7 @@ export default function Header() {
                             className="flex items-center gap-3 p-2 hover:bg-espresso/5 rounded-[16px] cursor-pointer transition-colors group"
                           >
                             <div className="w-12 h-12 bg-border rounded-xl overflow-hidden shrink-0">
-                              <Image src={product.image} alt={product.name} width={48} height={48} className="w-full h-full object-cover" />
+                              <Image src={product.image} alt={product.name} width={48} height={48} unoptimized={true} className="w-full h-full object-cover" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <h4 className="text-xs font-nunito font-bold text-espresso truncate">{product.name}</h4>
@@ -178,13 +194,63 @@ export default function Header() {
             >
               <div className="container mx-auto px-4 py-8 flex flex-col gap-6 font-nunito font-bold text-xl">
                 {/* Mobile Search Bar */}
-                <div className="flex items-center bg-white px-4 py-3 rounded-2xl border border-border">
-                  <Search className="w-5 h-5 text-text-muted" />
-                  <input 
-                    type="text" 
-                    placeholder="Search..." 
-                    className="bg-transparent border-none outline-none px-3 text-base w-full font-jakarta"
-                  />
+                <div className="relative">
+                  <div className="flex items-center bg-white px-4 py-3 rounded-2xl border border-border">
+                    <Search className="w-5 h-5 text-text-muted" />
+                    <input 
+                      type="text" 
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search for your pet..." 
+                      className="bg-transparent border-none outline-none px-3 text-base w-full font-jakarta"
+                    />
+                    {searchQuery && (
+                      <button onClick={() => setSearchQuery("")} className="hover:text-terracotta">
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Mobile Search Results */}
+                  <AnimatePresence>
+                    {searchQuery && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 right-0 mt-2 bg-white border border-border rounded-[20px] shadow-xl overflow-hidden p-2 z-[200]"
+                      >
+                        {searchResults.length > 0 ? (
+                          <div className="space-y-1">
+                            {searchResults.map((product) => (
+                              <div 
+                                key={product.id} 
+                                onClick={() => {
+                                  addToCart(product)
+                                  setSearchQuery("")
+                                  setIsMenuOpen(false)
+                                }}
+                                className="flex items-center gap-3 p-2 hover:bg-espresso/5 rounded-[12px] cursor-pointer transition-colors group"
+                              >
+                                <div className="w-10 h-10 bg-border rounded-lg overflow-hidden shrink-0">
+                                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="text-[13px] font-nunito font-bold text-espresso truncate">{product.name}</h4>
+                                  <p className="text-[11px] text-terracotta font-nunito font-bold">₹{product.price.toLocaleString('en-IN')}</p>
+                                </div>
+                                <Plus className="w-4 h-4 text-espresso/20 group-hover:text-terracotta transition-colors" />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="p-4 text-center">
+                            <p className="text-xs text-text-muted italic font-jakarta">No pet essentials found 🐾</p>
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 {navLinks.map((link) => (
                   <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="hover:text-terracotta transition-colors">
@@ -270,7 +336,10 @@ export default function Header() {
                   <span>Total</span>
                   <span>₹{totalPrice.toLocaleString('en-IN')}</span>
                 </div>
-                <button className="btn-primary w-full py-4 text-lg clickable">
+                <button 
+                  onClick={handleCheckout}
+                  className="btn-primary w-full py-4 text-lg clickable"
+                >
                   Proceed to Checkout
                 </button>
               </div>

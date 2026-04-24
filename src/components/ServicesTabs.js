@@ -13,7 +13,7 @@ const services = [
     description: "Our spa-like grooming experience focuses on comfort and care. Using organic shampoos and gentle techniques, we leave your pet smelling and feeling like royalty.",
     longDescription: "Our grooming philosophy goes beyond just a haircut. We provide a sensory-friendly environment designed to reduce anxiety. Each session includes a deep-coat conditioning treatment, aromatherapy baths using pet-safe botanical oils, and a stress-free nail trimming process. Our master groomers are trained in breed-specific styles and skin health diagnostics.",
     features: ["Deep Coat Conditioning", "Stress-Free Nail Trimming", "Aromatherapy Baths", "Skin Health Audit", "Organic Breed Styling"],
-    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7"
   },
   {
     id: "vet",
@@ -23,7 +23,7 @@ const services = [
     description: "Professional medical advice delivered with empathy. Our certified vets offer comprehensive checkups and specialized care plans for pets of all ages.",
     longDescription: "We believe in proactive health management. Our veterinary team provides comprehensive digital checkups, behavior counseling, and preventative screening. We specialize in early detection of age-related issues and personalized vitality plans. Whether it's a routine check or a complex health concern, we guide you with science and heart.",
     features: ["Virtual Health Checks", "Nutrition Diagnostics", "Preventative Care Plans", "Behavior Counseling", "24/7 Digital Support"],
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee"
   },
   {
     id: "nutrition",
@@ -33,7 +33,7 @@ const services = [
     description: "We believe food is medicine. Our nutritionists create custom meal plans based on your pet's breed, activity level, and specific health requirements.",
     longDescription: "Optimal health starts in the bowl. Our certified pet nutritionists analyze your pet's specific requirements to craft seasonal meal plans. We focus on weight management, allergy diagnostics, and performance-based feeding. Using a science-backed approach, we help you choose the right balance of proteins, vitamins, and minerals for a long, vibrant life.",
     features: ["Breed-Specific Diets", "Weight Management", "Allergy-Friendly Options", "Metabolic Profiling", "Seasonal Diet Shifts"],
-    image: "https://images.unsplash.com/photo-1589924691106-31b01269389f?auto=format&fit=crop&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1517849845537-4d257902454a"
   }
 ]
 
@@ -190,7 +190,7 @@ export default function ServicesTabs() {
                           {s.description}
                         </p>
                         <div className="relative aspect-[4/3] rounded-[20px] overflow-hidden">
-                          <Image src={s.image} alt={s.title} fill className="object-cover" />
+                          <Image src={s.image} alt={s.title} fill unoptimized={true} className="object-cover" />
                         </div>
                         <button 
                           onClick={() => setShowBooking(true)}
@@ -293,6 +293,7 @@ export default function ServicesTabs() {
                 src={currentService.image} 
                 alt={currentService.title} 
                 fill
+                unoptimized={true}
                 className="object-cover rounded-[20px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 to-transparent" />
