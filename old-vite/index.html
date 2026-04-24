@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuddle Paw | Premium Pet Care & Accessories</title>
+    <meta name="description" content="Thoughtful care for every paw. Premium pet food, toys, and accessories for your beloved companions.">
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="container nav-content">
+        <a href="/" class="logo">🐾 CUDDLE PAW</a>
+        <ul class="nav-links">
+          <li><a href="#shop" class="nav-link">Shop</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#adoption" class="nav-link">Adoption</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-primary" id="cart-btn">Cart (0)</button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="app">
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <div class="container hero-content">
+          <span class="hero-tagline fade-up">Quality for your furry friends</span>
+          <h1 class="fade-up">Because They Deserve Better</h1>
+          <p class="fade-up">Elevate your pet's lifestyle with our curated collection of premium, eco-friendly, and vet-approved products.</p>
+          <div class="hero-actions fade-up">
+            <a href="#shop" class="btn btn-primary">Shop Now</a>
+            <a href="#about" class="btn btn-secondary">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-canvas">
+          <!-- 3D Mascot / Scene will be injected here -->
+        </div>
+      </section>
+
+      <!-- Featured Products -->
+      <section class="container" id="shop">
+        <div class="section-header fade-up">
+          <h2>Popular Collections</h2>
+          <p>Curated essentials for your pet's everyday joy.</p>
+        </div>
+        <div class="product-grid" id="product-grid">
+          <!-- Products will be injected here -->
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <section class="about-section" id="about">
+        <div class="container about-grid">
+          <div class="about-image fade-up">
+            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1200" alt="About Cuddle Paw">
+          </div>
+          <div class="about-content">
+            <span class="hero-tagline fade-up">Our Story</span>
+            <h2 class="fade-up">Driven by Love, Guided by Science</h2>
+            <p class="fade-up">Founded in 2024, Cuddle Paw began with a simple mission: to provide pets with the quality of life they truly deserve. We believe that every tail wag and every purr is a testament to the bond we share.</p>
+            <p class="fade-up">Our products are hand-picked by veterinary experts and sustainability advocates to ensure your furry friends thrive in a healthy, happy home.</p>
+            <div class="about-stats fade-up">
+              <div class="stat-item">
+                <h3>10k+</h3>
+                <span>Happy Paws</span>
+              </div>
+              <div class="stat-item">
+                <h3>500+</h3>
+                <span>Eco Products</span>
+              </div>
+              <div class="stat-item">
+                <h3>24/7</h3>
+                <span>Vet Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section class="services-section" id="services">
+        <div class="container">
+          <div class="section-header fade-up" style="text-align: center;">
+            <h2>Premium Care Services</h2>
+            <p>From grooming to wellness, we've got you covered.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card fade-up">
+              <div class="service-icon">✂️</div>
+              <h3>Luxury Grooming</h3>
+              <p>Spa treatments that leave your pet smelling and feeling like royalty.</p>
+            </div>
+            <div class="service-card fade-up">
+              <div class="service-icon">🩺</div>
+              <h3>Vet Consultation</h3>
+              <p>Expert medical advice from certified professionals at your convenience.</p>
+            </div>
+            <div class="service-card fade-up">
+              <div class="service-icon">🦴</div>
+              <h3>Nutrition Plans</h3>
+              <p>Custom-tailored diets to help your pet reach their peak health.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Adoption Section -->
+      <section class="adoption-section" id="adoption">
+        <div class="container adoption-banner fade-up">
+          <div class="adoption-text">
+            <h2>Find Your New Best Friend</h2>
+            <p>Every pet deserves a loving home. Explore our rescue partners and find a soulmate today.</p>
+            <a href="#" class="btn btn-primary">Browse Adoption</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h2>Your Cart 🐾</h2>
+        <button id="close-cart" class="btn-ghost">✕</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p style="text-align: center; margin-top: 2rem;">Looks like your pet is still deciding 🐾</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cart-total-value">$0.00</span>
+        </div>
+        <button class="btn btn-primary" style="width: 100%;">Checkout</button>
+      </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
