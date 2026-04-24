@@ -1,9 +1,9 @@
 "use client"
-import { Search, ShoppingCart, User, Menu, X, Plus } from "lucide-react"
+import { Search, ShoppingCart, User, Menu, X, Plus, ChevronRight } from "lucide-react"
 import { useCartStore } from "@/store/useCartStore"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-
+import Link from "next/link"
 import { allProducts } from "@/data/products"
 import Image from "next/image"
 
@@ -54,10 +54,10 @@ export default function Header() {
   }, [searchQuery])
 
   const navLinks = [
-    { name: "Shop", href: "#shop" },
-    { name: "Services", href: "#services" },
-    { name: "Our Story", href: "#about" },
-    { name: "Blog", href: "#blog" }
+    { name: "Shop", href: "/shop" },
+    { name: "Services", href: "/#services" },
+    { name: "Our Story", href: "/#about" },
+    { name: "Blog", href: "#" }
   ]
 
   return (
@@ -83,14 +83,14 @@ export default function Header() {
             
             <nav className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
-                <a 
+                <Link 
                   key={link.name} 
                   href={link.href} 
                   className="text-[15px] font-jakarta font-medium text-espresso hover:text-terracotta transition-colors relative group py-2 clickable"
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-terracotta transition-all duration-300 group-hover:w-full" />
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -195,7 +195,10 @@ export default function Header() {
               <div className="container mx-auto px-4 py-8 flex flex-col gap-6 font-nunito font-bold text-xl">
                 {/* Mobile Search Bar */}
                 <div className="relative">
-                  <div className="flex items-center bg-white px-4 py-3 rounded-2xl border border-border">
+                  <form 
+                    onSubmit={(e) => { e.preventDefault(); if (searchResults.length > 0) { setIsMenuOpen(false); } }}
+                    className="flex items-center bg-white px-4 py-3 rounded-2xl border border-border focus-within:border-terracotta transition-colors"
+                  >
                     <Search className="w-5 h-5 text-text-muted" />
                     <input 
                       type="text" 
@@ -205,11 +208,11 @@ export default function Header() {
                       className="bg-transparent border-none outline-none px-3 text-base w-full font-jakarta"
                     />
                     {searchQuery && (
-                      <button onClick={() => setSearchQuery("")} className="hover:text-terracotta">
+                      <button type="button" onClick={() => setSearchQuery("")} className="hover:text-terracotta">
                         <X className="w-4 h-4" />
                       </button>
                     )}
-                  </div>
+                  </form>
 
                   {/* Mobile Search Results */}
                   <AnimatePresence>
@@ -253,16 +256,29 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
                 {navLinks.map((link) => (
-                  <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="hover:text-terracotta transition-colors">
+                  <Link 
+                    key={link.name} 
+                    href={link.href} 
+                    onClick={() => setIsMenuOpen(false)} 
+                    className="hover:text-terracotta transition-colors flex items-center justify-between"
+                  >
                     {link.name}
-                  </a>
+                    <ChevronRight className="w-5 h-5 text-espresso/20" />
+                  </Link>
                 ))}
-                <div className="pt-6 border-t border-border flex items-center justify-between">
+                
+                <button 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="pt-6 border-t border-border flex items-center justify-between group clickable"
+                >
                   <div className="flex items-center gap-3">
-                    <User className="w-6 h-6 text-text-muted" />
-                    <span className="text-base font-jakarta font-medium text-espresso">Account</span>
+                    <div className="w-10 h-10 bg-espresso/5 rounded-xl flex items-center justify-center group-hover:bg-terracotta/10 group-hover:text-terracotta transition-colors">
+                      <User className="w-5 h-5" />
+                    </div>
+                    <span className="text-base font-jakarta font-medium text-espresso">Account & Orders</span>
                   </div>
-                </div>
+                  <ChevronRight className="w-5 h-5 text-espresso/20" />
+                </button>
               </div>
             </motion.div>
           )}

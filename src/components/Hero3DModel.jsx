@@ -75,8 +75,12 @@ export default function Hero3DModel({ containerRef }) {
   }, [names, actions, containerRef])
 
   useFrame((state, delta) => {
+    // Play idle animation on all devices
+    if (actions[names[0]] && !actions[names[0]].isRunning()) {
+      actions[names[0]].play()
+    }
+
     if (!isMobile) {
-      if (actions[names[0]] && !actions[names[0]].isRunning()) actions[names[0]].play()
       if (group.current) {
         group.current.position.x = THREE.MathUtils.damp(group.current.position.x, HOME_X, WALK_LAMBDA, delta)
         group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, 0, 4, delta)
@@ -92,7 +96,7 @@ export default function Hero3DModel({ containerRef }) {
   })
 
   return (
-    <group ref={group} scale={1.15} position={[0.5, -1.0, 0]} dispose={null}>
+    <group ref={group} scale={1.15} position={[isMobile ? 0 : 0.5, -1.0, 0]} dispose={null}>
       <primitive object={scene} />
       <ContactShadows position={[0, -0.01, 0]} scale={40} blur={2} far={1} opacity={0.2} resolution={512} />
     </group>

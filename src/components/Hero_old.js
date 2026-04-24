@@ -11,48 +11,53 @@ function FloatingBackground() {
 
   return (
     <>
+      <div className="absolute inset-0 flex items-center justify-center z-[999] pointer-events-none">
+        <div className="bg-red-600 text-white px-10 py-5 rounded-3xl text-3xl font-black shadow-2xl animate-bounce">
+          HERO_V4_DIAGNOSTIC
+        </div>
+      </div>
       {/* BACKGROUND */}
-      <div className="absolute inset-0 z-[0] overflow-hidden pointer-events-none">
+      {/* <div className="absolute inset-0 z-[0] overflow-hidden pointer-events-none">
         <img
           src="/images/hero-2.png"
           alt=""
           className="w-full h-full object-cover object-center"
         />
-      </div>
+      </div> */}
 
       {/* 1. Behind the Puppy (z-[2]) */}
       <img src="/images/white_yarn.png" alt="" 
-        className="absolute pointer-events-none z-[2] bottom-[24%] right-[70%] md:right-[38%]"
+        className="hidden absolute pointer-events-none z-[2] bottom-[24%] right-[70%] md:right-[38%]"
         style={{ width: 'clamp(60px, 15vw, 120px)', opacity: 0.85, filter: dropShadow, transform: 'rotate(15deg)' }} />
       
       <img src="/images/green_yarn.png" alt="" 
-        className="absolute pointer-events-none z-[2] bottom-[20%] right-[15%] md:right-[22%]"
+        className="hidden absolute pointer-events-none z-[2] bottom-[20%] right-[15%] md:right-[22%]"
         style={{ width: 'clamp(80px, 18vw, 140px)', opacity: 0.9, filter: dropShadow }} />
       
       <img src="/images/rope_knot.png" alt="" 
-        className="absolute pointer-events-none z-[2] bottom-[30%] right-[5%] md:right-[14%]"
+        className="hidden absolute pointer-events-none z-[2] bottom-[30%] right-[5%] md:right-[14%]"
         style={{ width: 'clamp(90px, 20vw, 150px)', opacity: 0.9, filter: dropShadow, transform: 'rotate(-25deg)' }} />
 
       {/* 2. In Front of Puppy (z-[5]) */}
       <img src="/images/wool_bundle.png" alt="" 
-        className="absolute pointer-events-none z-[5] bottom-[15%] left-[5%] md:left-auto md:right-[44%]"
+        className="hidden absolute pointer-events-none z-[5] bottom-[15%] left-[5%] md:left-auto md:right-[44%]"
         style={{ width: 'clamp(100px, 25vw, 200px)', filter: dropShadow, transform: 'rotate(-10deg)' }} />
       
       <img src="/images/terra_bone.png" alt="" 
-        className="absolute pointer-events-none z-[5] bottom-[6%] right-[60%] md:right-[26%]"
+        className="hidden absolute pointer-events-none z-[5] bottom-[6%] right-[60%] md:right-[26%]"
         style={{ width: 'clamp(90px, 22vw, 160px)', filter: dropShadow, transform: 'rotate(5deg)' }} />
       
       <img src="/images/mouse.png" alt="" 
-        className="absolute pointer-events-none z-[5] bottom-[18%] right-[10%] md:right-[32%]"
+        className="hidden absolute pointer-events-none z-[5] bottom-[18%] right-[10%] md:right-[32%]"
         style={{ width: 'clamp(60px, 12vw, 100px)', filter: dropShadow, transform: 'rotate(20deg)' }} />
       
       <img src="/images/brown_yarn.png" alt="" 
-        className="absolute pointer-events-none z-[5] bottom-[4%] right-[5%] md:right-[18%]"
+        className="hidden absolute pointer-events-none z-[5] bottom-[4%] right-[5%] md:right-[18%]"
         style={{ width: 'clamp(130px, 30vw, 220px)', filter: dropShadow }} />
 
       {/* Resized Tennis Ball - Moved behind puppy (z-[3]) */}
       <img src="/images/tennis_ball.png" alt="" 
-        className="absolute pointer-events-none z-[3]"
+        className="hidden absolute pointer-events-none z-[3]"
         style={{ 
           width: 'clamp(80px, 25vw, 250px)', 
           bottom: '5%', 

@@ -20,8 +20,8 @@ export default function AnnouncementBar() {
   if (!isVisible) return null
 
   return (
-    <div className="h-9 bg-[#F5ECD8] border-b border-border/40 relative flex items-center justify-center overflow-hidden z-[110]">
-      <div className="ticker-text md:ticker-none text-espresso text-[13px] font-nunito font-semibold tracking-wide flex items-center gap-4">
+    <div className="h-9 bg-espresso border-b border-border/40 relative flex items-center justify-center overflow-hidden z-[110]">
+      <div className="ticker-text md:ticker-none text-white text-[13px] font-nunito font-semibold tracking-wide flex items-center gap-4">
         <span>🚚 Free delivery on orders above ₹499 | Use code PAWLOVE for 10% off</span>
         <span className="md:hidden">🚚 Free delivery on orders above ₹499 | Use code PAWLOVE for 10% off</span>
       </div>
