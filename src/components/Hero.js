@@ -50,15 +50,6 @@ function FloatingBackground() {
         className="absolute pointer-events-none z-[5] bottom-[4%] right-[5%] md:right-[18%]"
         style={{ width: 'clamp(130px, 30vw, 220px)', filter: dropShadow }} />
 
-      {/* Resized Tennis Ball - Moved behind puppy (z-[3]) */}
-      <img src="/images/tennis_ball.png" alt="" 
-        className="absolute pointer-events-none z-[3]"
-        style={{ 
-          width: 'clamp(80px, 25vw, 250px)', 
-          bottom: '5%', 
-          right: '5%', 
-          filter: dropShadow 
-        }} />
     </>
   )
 }
