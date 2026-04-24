@@ -7,40 +7,42 @@ import * as THREE from "three"
 import Hero3DModel from "./Hero3DModel"
 
 function FloatingBackground() {
+  const dropShadow = "drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.15))"
+  
   return (
     <>
-      {/* 1. BACKGROUND TEXTURE LAYER (z-0) */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 z-[0] overflow-hidden pointer-events-none">
         <img 
-          src="/images/hero-bg.png" 
+          src="/images/hero-2.png" 
           alt="" 
           className="w-full h-full object-cover object-center"
         />
       </div>
 
-      {/* 2. DEEP BACKGROUND (z-5) - Responsive Scaling */}
-      <img 
-        src="/images/brown_yarn.png" 
-        alt="" 
-        className="absolute -top-10 -left-10 w-[150px] sm:w-[300px] md:w-[500px] blur-xl md:blur-2xl opacity-40 z-[5] pointer-events-none will-change-transform" 
-      />
-      <img 
-        src="/images/terra_bone.png" 
-        alt="" 
-        className="absolute top-5 -right-10 w-[200px] md:w-[600px] rotate-45 blur-xl md:blur-2xl opacity-50 z-[5] pointer-events-none will-change-transform" 
-      />
- 
-      {/* 5. FOREGROUND (z-40) - Anchored to corners to avoid content collision */}
-      <img 
-        src="/images/wool_bundle.png" 
-        alt="" 
-        className="absolute bottom-[20%] -left-16 w-[180px] sm:w-[300px] md:w-[450px] z-40 drop-shadow-xl pointer-events-none will-change-transform" 
-      />
-      <img 
-        src="/images/tennis_ball.png" 
-        alt="" 
-        className="absolute bottom-[40%] -right-10 md:-bottom-20 md:right-10 w-[150px] sm:w-[250px] md:w-[350px] -rotate-12 z-40 drop-shadow-2xl pointer-events-none will-change-transform" 
-      />
+      {/* RE-SIZED AND RANDOMLY SPACED TOYS AROUND PUPPY */}
+      
+      {/* 1. Behind the Puppy (z-[2]) */}
+      <img src="/images/white_yarn.png" alt="" className="absolute pointer-events-none z-[2]" 
+        style={{ bottom: '24%', right: '38%', width: '120px', opacity: 0.85, filter: dropShadow, transform: 'rotate(15deg)' }} />
+      <img src="/images/green_yarn.png" alt="" className="absolute pointer-events-none z-[2]" 
+        style={{ bottom: '20%', right: '22%', width: '140px', opacity: 0.9, filter: dropShadow }} />
+      <img src="/images/rope_knot.png" alt="" className="absolute pointer-events-none z-[2]" 
+        style={{ bottom: '26%', right: '14%', width: '150px', opacity: 0.9, filter: dropShadow, transform: 'rotate(-25deg)' }} />
+
+      {/* 2. In Front of Puppy (z-[5]) */}
+      <img src="/images/wool_bundle.png" alt="" className="absolute pointer-events-none z-[5]" 
+        style={{ bottom: '12%', right: '44%', width: '200px', filter: dropShadow, transform: 'rotate(-10deg)' }} />
+      <img src="/images/terra_bone.png" alt="" className="absolute pointer-events-none z-[5]" 
+        style={{ bottom: '6%', right: '26%', width: '160px', filter: dropShadow, transform: 'rotate(5deg)' }} />
+      <img src="/images/mouse.png" alt="" className="absolute pointer-events-none z-[5]" 
+        style={{ bottom: '14%', right: '32%', width: '100px', filter: dropShadow, transform: 'rotate(20deg)' }} />
+      <img src="/images/brown_yarn.png" alt="" className="absolute pointer-events-none z-[5]" 
+        style={{ bottom: '4%', right: '18%', width: '220px', filter: dropShadow }} />
+      
+      {/* Resized Tennis Ball */}
+      <img src="/images/tennis_ball.png" alt="" className="absolute pointer-events-none z-[5]" 
+        style={{ bottom: '-15px', right: '-15px', width: '250px', filter: dropShadow }} />
     </>
   )
 }
@@ -55,8 +57,8 @@ export default function Hero() {
     >
       <FloatingBackground />
       
-      {/* 1. TEXT CONTENT (Top on Mobile/Tablet, Left on Desktop) */}
-      <div className="relative z-[60] w-full lg:w-1/2 px-4 sm:px-10 lg:pl-[5%] order-1 lg:order-1 pb-10 lg:pb-0">
+      {/* 1. TEXT CONTENT (z-[5]) */}
+      <div className="relative z-[5] w-full lg:w-1/2 px-4 sm:px-10 lg:pl-[5%] order-1 lg:order-1 pb-10 lg:pb-0">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -105,8 +107,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* 2. PUPPY CANVAS (Below on Mobile/Tablet, Right on Desktop) */}
-      <div className="relative lg:absolute lg:top-0 lg:right-0 w-full lg:w-[60%] h-[45vh] sm:h-[55vh] lg:h-full z-[20] order-2 lg:order-2">
+      {/* 2. PUPPY CANVAS (z-[4]) */}
+      <div className="relative lg:absolute lg:top-0 lg:right-0 w-full lg:w-[60%] h-[45vh] sm:h-[55vh] lg:h-full z-[4] order-2 lg:order-2">
         {/* Puppy Glow behind the dog */}
         <div className="absolute inset-0 flex items-center justify-center -z-10">
           <div className="w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-terracotta/10 blur-[100px] rounded-full"></div>
