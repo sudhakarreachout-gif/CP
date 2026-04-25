@@ -96,7 +96,7 @@ export default function Hero3DModel({ containerRef }) {
   })
 
   return (
-    <group ref={group} scale={1.15} position={[isMobile ? 0 : 0.5, -1.0, 0]} dispose={null}>
+    <group ref={group} scale={isMobile ? 1.2 : 1.45} position={[isMobile ? 0 : 0.5, -1.1, 0]} dispose={null}>
       <primitive object={scene} />
       <ContactShadows position={[0, -0.01, 0]} scale={40} blur={2} far={1} opacity={0.2} resolution={512} />
     </group>

@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
     >
       {/* Best Seller Badge */}
       {product.isBestSeller && (
-        <div className="absolute top-6 left-6 z-10 bg-butter text-[#7A5000] font-nunito font-bold text-[10px] px-3 py-1 rounded-full shadow-sm">
+        <div className="absolute top-6 left-6 z-10 bg-badge-bestseller text-white font-sans font-bold text-[10px] px-3 py-1 rounded-full shadow-sm uppercase tracking-wider">
           Best Seller
         </div>
       )}
@@ -25,15 +25,15 @@ export default function ProductCard({ product }) {
       {/* Wishlist Heart */}
       <button 
         onClick={(e) => { e.stopPropagation(); setIsLiked(!isLiked); }}
-        className="absolute top-6 right-6 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm text-espresso/30 hover:text-terracotta transition-all clickable group/heart"
+        className="absolute top-6 right-6 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm text-text-heading/30 hover:text-primary transition-all clickable group/heart"
       >
         <motion.div animate={isLiked ? { scale: [1, 1.3, 1] } : {}}>
-          <Heart className={`w-5 h-5 ${isLiked ? "fill-terracotta text-terracotta" : "text-[#C8B8A2]"}`} />
+          <Heart className={`w-5 h-5 ${isLiked ? "fill-primary text-primary" : "text-border"}`} />
         </motion.div>
       </button>
 
       {/* Image Container */}
-      <div className="relative aspect-square rounded-t-[12px] overflow-hidden mb-5 bg-[#F0E8DC] flex items-center justify-center product-image-container">
+      <div className="relative aspect-square rounded-t-[12px] overflow-hidden mb-5 bg-primary-light/10 flex items-center justify-center product-image-container">
         {!imgError ? (
           <Image 
             src={product.image} 
@@ -50,7 +50,7 @@ export default function ProductCard({ product }) {
         {/* Hover Add to Cart Button (Desktop) */}
         <button 
           onClick={(e) => { e.stopPropagation(); addToCart(product); }}
-          className="absolute bottom-0 left-0 w-full bg-espresso text-white py-3 font-nunito font-bold text-[13px] translate-y-full group-hover:translate-y-0 transition-transform duration-200 clickable hidden md:block"
+          className="absolute bottom-0 left-0 w-full bg-primary text-white py-4 font-sans font-bold text-[13px] translate-y-full group-hover:translate-y-0 transition-transform duration-300 clickable hidden md:block uppercase tracking-widest"
         >
           Add to Cart
         </button>
@@ -58,7 +58,7 @@ export default function ProductCard({ product }) {
         {/* Quick Add Button (Mobile) */}
         <button 
           onClick={(e) => { e.stopPropagation(); addToCart(product); }}
-          className="absolute bottom-2 right-2 z-10 w-10 h-10 bg-terracotta text-white rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform md:hidden"
+          className="absolute bottom-2 right-2 z-10 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform md:hidden"
         >
           <Plus className="w-6 h-6" />
         </button>
@@ -66,18 +66,18 @@ export default function ProductCard({ product }) {
 
       {/* Product Info */}
       <div className="flex-1 space-y-2 px-1">
-        <div className="flex items-center gap-1.5 text-butter">
+        <div className="flex items-center gap-1.5 text-primary">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className={`w-3.5 h-3.5 ${i < Math.floor(product.rating || 4.5) ? "fill-current" : "text-border"}`} />
           ))}
-          <span className="text-[12px] font-nunito font-bold text-sage ml-1">{product.rating || 4.9}</span>
+          <span className="text-[12px] font-sans font-bold text-secondary ml-1">{product.rating || 4.9}</span>
         </div>
         
-        <h3 className="text-[15px] font-nunito font-bold text-espresso leading-tight line-clamp-2">
+        <h3 className="text-[16px] font-sans font-bold text-text-heading leading-tight line-clamp-2">
           {product.name}
         </h3>
         
-        <p className="text-[18px] font-nunito font-bold text-espresso">
+        <p className="price text-primary font-bold">
           ₹{product.price.toLocaleString('en-IN')}
         </p>
       </div>

@@ -28,11 +28,13 @@ const testimonials = [
 
 export default function TestimonialStrip() {
   return (
-    <section className="py-[60px] md:px-[80px] bg-[#FFFAF4]">
+    <section className="section-padding bg-surface border-t border-border/50">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">
-          What Pet Parents Are Saying 🐾
-        </h2>
+        <div className="flex flex-col items-center text-center mb-16">
+          <h2 className="section-title">
+            What Pet Parents Are Saying 🐾
+          </h2>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
@@ -42,27 +44,27 @@ export default function TestimonialStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="card-hover bg-bg border border-border rounded-[20px] p-[28px] flex flex-col justify-between"
+              className="card-hover bg-bg border border-border rounded-[24px] p-8 flex flex-col justify-between"
             >
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div className="flex gap-1">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-butter text-butter" />
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-[15px] font-sans text-espresso leading-[1.6]">
+                <p className="quote-text leading-relaxed">
                   "{t.text}"
                 </p>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-border/50">
-                <div className="flex flex-col gap-3">
+              <div className="mt-8 pt-6 border-t border-border/60">
+                <div className="flex flex-col gap-4">
                   <div>
-                    <h4 className="font-nunito font-bold text-espresso text-[14px]">{t.name}</h4>
-                    <p className="text-[12px] font-sans text-text-muted">{t.location}</p>
+                    <h4 className="font-sans font-bold text-text-heading text-[15px]">{t.name}</h4>
+                    <p className="text-[12px] font-sans text-text-muted font-medium">{t.location}</p>
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 bg-sage/15 border border-sage/20 rounded-full w-fit">
-                    <span className="text-sage font-nunito font-bold text-[11px]">{t.pet}</span>
+                  <div className="inline-flex items-center px-4 py-1.5 bg-secondary-light/60 border border-secondary/10 rounded-full w-fit">
+                    <span className="text-secondary font-sans font-bold text-[10px] uppercase tracking-[0.15em]">{t.pet}</span>
                   </div>
                 </div>
               </div>

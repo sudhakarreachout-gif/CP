@@ -22,7 +22,7 @@ export default function WhatsAppButton() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
-            className="mr-3 bg-espresso text-white px-5 py-2.5 rounded-full text-xs font-nunito font-bold shadow-xl whitespace-nowrap pointer-events-none"
+            className="mr-4 bg-text-heading text-white px-6 py-3 rounded-full text-[11px] font-sans font-bold shadow-2xl whitespace-nowrap pointer-events-none uppercase tracking-widest border border-white/5"
           >
             Talk to a Specialist 🐾
           </motion.div>
@@ -31,12 +31,12 @@ export default function WhatsAppButton() {
 
       <button 
         onClick={handleClick}
-        className="w-14 h-14 bg-espresso rounded-[20px] flex items-center justify-center text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 relative group"
+        className="w-16 h-16 bg-text-heading rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 active:scale-90 transition-all duration-300 relative group clickable"
       >
-        <MessageCircle className="w-6 h-6 transition-transform group-hover:rotate-12" />
+        <MessageCircle className="w-7 h-7 transition-transform group-hover:rotate-12" />
         
         {/* Subtler indicator dot */}
-        <div className="absolute top-0 right-0 w-3 h-3 bg-terracotta border-2 border-white rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute top-1 right-1 w-4 h-4 bg-primary border-2 border-text-heading rounded-full" />
       </button>
     </div>
   )

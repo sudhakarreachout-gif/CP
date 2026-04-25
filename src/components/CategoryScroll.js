@@ -22,10 +22,10 @@ export default function CategoryScroll({ activeCategory, onSelect }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
                 onClick={() => onSelect(activeCategory === cat.name ? null : cat.name)}
-                className={`flex items-center gap-2 px-5 py-2 rounded-full border-[1.5px] font-nunito font-bold text-sm transition-all clickable whitespace-nowrap ${
+                className={`flex items-center gap-3 px-6 py-2.5 rounded-full border-[1.5px] font-sans font-bold text-[13px] transition-all clickable whitespace-nowrap uppercase tracking-wider ${
                   activeCategory === cat.name 
-                  ? "bg-espresso text-white border-espresso shadow-lg" 
-                  : "bg-surface border-border text-espresso hover:border-terracotta hover:text-terracotta"
+                  ? "bg-text-heading text-white border-text-heading shadow-[0_8px_20px_rgba(28,20,16,0.15)]" 
+                  : "bg-surface border-border text-text-heading hover:border-primary hover:text-primary"
                 }`}
               >
                 <span className="text-base">{cat.icon}</span>

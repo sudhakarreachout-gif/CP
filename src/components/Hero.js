@@ -70,45 +70,45 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="stagger-fade-in p-6 sm:p-12 lg:p-12 rounded-[2.5rem] lg:rounded-[3rem] bg-white/30 lg:bg-white/15 backdrop-blur-[15px] border border-white/40 shadow-[0_20px_60px_rgba(44,36,22,0.1)] relative max-w-2xl mx-auto lg:mx-0"
+          className="stagger-fade-in p-6 sm:p-12 lg:p-12 rounded-[2.5rem] lg:rounded-[3rem] bg-surface/40 backdrop-blur-[15px] border border-border/50 shadow-[0_20px_60px_rgba(196,94,42,0.05)] relative max-w-2xl mx-auto lg:mx-0"
         >
           {/* Edge blend glow */}
-          <div className="absolute inset-0 -z-10 rounded-[2.5rem] lg:rounded-[3rem] blur-3xl bg-white/20 opacity-60 scale-105"></div>
+          <div className="absolute inset-0 -z-10 rounded-[2.5rem] lg:rounded-[3rem] blur-3xl bg-primary-light/10 opacity-60 scale-105"></div>
 
-          <div className="inline-flex items-center gap-2 bg-terracotta/20 border border-terracotta/40 text-terracotta px-3 py-1 md:px-4 md:py-1.5 rounded-full font-nunito font-extrabold text-[10px] md:text-[12px] uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center gap-2 bg-primary-light/50 border border-primary/10 text-primary px-4 py-1.5 rounded-full font-sans font-bold text-[10px] uppercase tracking-[0.2em] mb-8">
             <span>🐾 New Collection Just Dropped</span>
           </div>
 
-          <h1 className="text-[2.2rem] sm:text-[3.5rem] lg:text-[4.5rem] font-playfair font-black text-espresso leading-[1.1] mb-6 text-center lg:text-left">
+          <h1 className="hero-headline mb-8 text-center lg:text-left text-text-heading">
             Thoughtful Living <br />
-            <span className="text-terracotta">For Every Paw.</span>
+            <span className="text-primary italic">For Every Paw.</span>
           </h1>
 
-          <p className="text-sm sm:text-lg font-nunito font-bold text-espresso/90 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed text-center lg:text-left">
+          <p className="hero-subtext mb-10 max-w-lg mx-auto lg:mx-0 text-center lg:text-left text-text-body">
             Because your pet deserves the same love you give them. Every product is crafted for comfort and longevity.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
             <a href="#shop" className="w-full sm:w-auto">
-              <button className="btn-primary w-full px-10 py-4 shadow-xl hover:scale-105 active:scale-95 transition-all clickable">
+              <button className="btn-primary w-full shadow-2xl active:scale-95 transition-all clickable uppercase tracking-widest text-sm">
                 Shop Collection
               </button>
             </a>
             <a href="#services" className="w-full sm:w-auto">
-              <button className="btn-secondary w-full px-10 py-4 bg-white/40 backdrop-blur-md border-white/60 hover:bg-espresso hover:text-white transition-all clickable">
-                Explore Care Services
+              <button className="btn-secondary w-full bg-white/10 backdrop-blur-xl border-primary/20 hover:bg-primary hover:text-white transition-all clickable uppercase tracking-widest text-sm">
+                Explore Services
               </button>
             </a>
           </div>
 
-          <div className="pt-8 border-t border-espresso/10">
-            <p className="text-[12px] sm:text-[14px] font-nunito font-black text-espresso/70 mb-5 flex items-center justify-center lg:justify-start gap-2 text-center lg:text-left">
-              <span className="text-terracotta text-lg">⭐</span> Loved by 10,000+ pet parents across India
+          <div className="pt-10 border-t border-border">
+            <p className="text-[12px] font-sans font-bold text-text-muted mb-6 flex items-center justify-center lg:justify-start gap-2 text-center lg:text-left tracking-wider uppercase">
+              <span className="text-primary text-xl">★</span> Loved by 10,000+ pet parents across India
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
-              <span className="px-4 py-2 bg-sage/30 border border-sage/40 text-sage-dark text-[11px] sm:text-[12px] font-black rounded-full backdrop-blur-sm">✅ Vet Approved</span>
-              <span className="px-4 py-2 bg-sage/30 border border-sage/40 text-sage-dark text-[11px] sm:text-[12px] font-black rounded-full backdrop-blur-sm">🌿 Eco Friendly</span>
-              <span className="px-4 py-2 bg-butter/40 border border-butter/40 text-[#8B6508] text-[11px] sm:text-[12px] font-black rounded-full backdrop-blur-sm">🇮🇳 Made in India</span>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+              <span className="px-5 py-2.5 bg-secondary-light/60 border border-secondary/10 text-secondary font-sans font-bold text-[10px] uppercase tracking-[0.15em] rounded-full backdrop-blur-sm">Vet Approved</span>
+              <span className="px-5 py-2.5 bg-secondary-light/60 border border-secondary/10 text-secondary font-sans font-bold text-[10px] uppercase tracking-[0.15em] rounded-full backdrop-blur-sm">Eco Friendly</span>
+              <span className="px-5 py-2.5 bg-primary-light/60 border border-primary/10 text-primary font-sans font-bold text-[10px] uppercase tracking-[0.15em] rounded-full backdrop-blur-sm">Made in India</span>
             </div>
           </div>
         </motion.div>
@@ -118,7 +118,7 @@ export default function Hero() {
       <div className="relative lg:absolute lg:top-0 lg:right-0 w-full lg:w-[60%] h-[45vh] sm:h-[55vh] lg:h-full z-[4] order-2 lg:order-2">
         {/* Puppy Glow behind the dog */}
         <div className="absolute inset-0 flex items-center justify-center -z-10">
-          <div className="w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-terracotta/10 blur-[100px] rounded-full"></div>
+          <div className="w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-primary/10 blur-[100px] rounded-full"></div>
         </div>
 
         <Canvas
@@ -129,7 +129,7 @@ export default function Hero() {
           style={{ width: '100%', height: '100%' }}
         >
           <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={38} />
-          <ambientLight intensity={1.5} color="#FDF6EE" />
+          <ambientLight intensity={1.5} color="#FDFAF5" />
           <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
 
           <Suspense fallback={null}>

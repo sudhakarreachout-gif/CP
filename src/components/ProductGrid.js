@@ -14,7 +14,7 @@ export default function ProductGrid({ activeCategory = null, onSelect }) {
   return (
     <section id="shop" className="section-padding bg-bg min-h-[600px] paw-pattern pt-0">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="flex flex-col items-center text-center mb-16">
           <h2 className="section-title">
             {activeCategory ? `${activeCategory} Essentials` : 'Curated for Every Paw'}
           </h2>
@@ -27,7 +27,7 @@ export default function ProductGrid({ activeCategory = null, onSelect }) {
         </div>
 
         {/* Filter Pills - Seamlessly Integrated */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((cat, i) => (
             <motion.button
               key={cat.name}
@@ -36,14 +36,14 @@ export default function ProductGrid({ activeCategory = null, onSelect }) {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               onClick={() => onSelect(activeCategory === cat.name ? null : cat.name)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full border-[1.5px] font-nunito font-bold text-sm transition-all clickable whitespace-nowrap shadow-sm ${
+              className={`flex items-center gap-3 px-7 py-3 rounded-full border-[1.5px] font-sans font-bold text-[12px] transition-all clickable whitespace-nowrap uppercase tracking-widest ${
                 activeCategory === cat.name 
-                ? "bg-espresso text-white border-espresso shadow-lg scale-105" 
-                : "bg-surface/50 backdrop-blur-sm border-border text-espresso hover:border-terracotta hover:text-terracotta"
+                ? "bg-text-heading text-white border-text-heading shadow-xl scale-105" 
+                : "bg-surface/80 backdrop-blur-sm border-border text-text-heading hover:border-primary hover:text-primary"
               }`}
             >
               <span className="text-base">{cat.icon}</span>
-              <span>{cat.name}</span>
+              {cat.name}
             </motion.button>
           ))}
         </div>
@@ -60,15 +60,15 @@ export default function ProductGrid({ activeCategory = null, onSelect }) {
         </motion.div>
 
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-20 bg-surface rounded-[32px] border border-border">
-            <p className="text-text-muted italic font-jakarta">No products found in this category yet. Stay tuned! 🐾</p>
+          <div className="text-center py-20 bg-surface rounded-[40px] border border-border">
+            <p className="text-text-muted italic font-sans">No products found in this category yet. Stay tuned! 🐾</p>
           </div>
         ) : (
           !activeCategory && (
-            <div className="mt-16 text-center">
+            <div className="mt-20 text-center">
               <Link href="/shop">
-                <button className="btn-primary px-12 py-5 text-lg shadow-2xl hover:scale-105 active:scale-95 transition-all clickable group">
-                  Explore All Collection 
+                <button className="btn-primary px-12 py-5 text-sm uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all clickable group">
+                  Explore Full Collection 
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
